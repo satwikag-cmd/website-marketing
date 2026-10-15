@@ -80,6 +80,7 @@ export function Navbar() {
       transition={{ duration: 0.7, ease: EASE_OUT }}
       className="fixed inset-x-0 top-0 z-50"
     >
+      <OnboardingBanner />
       <div
         className={cn(
           'border-b transition-[background-color,border-color,backdrop-filter] duration-300',
@@ -443,8 +444,6 @@ export function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <OnboardingBanner />
       </div>
     </motion.header>
   )

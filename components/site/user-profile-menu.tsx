@@ -76,7 +76,7 @@ export function UserProfileMenu() {
 
       {/* Dropdown Menu */}
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-72 origin-top-right overflow-hidden rounded-xl border border-border bg-surface p-3 shadow-xl backdrop-blur-xl">
+        <div className="absolute right-0 top-full mt-2 w-72 origin-top-right overflow-hidden rounded-xl border border-border bg-surface/98 p-3 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl z-50">
           {/* User info header */}
           <div className="flex items-center gap-3 border-b border-hairline pb-3">
             {user.photoURL && !imageError ? (
