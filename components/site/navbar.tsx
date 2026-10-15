@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { ArrowRight, ChevronDown, Layers, Menu, Sparkles, Wand2, BarChart3, ShoppingBag, Target, Users2, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -61,7 +62,7 @@ const SOLUTIONS_NAV = [
 ]
 
 export function Navbar() {
-  const { user, signInWithGoogle } = useAuth()
+  const { user, signInWithGoogle, signOutUser } = useAuth()
   const { scrollY } = useScroll()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -379,20 +380,41 @@ export function Navbar() {
                 <div className="mt-4 border-t border-hairline pt-4">
                   {user ? (
                     <div className="flex items-center justify-between rounded-xl border border-hairline bg-surface p-3">
-                      <div className="flex items-center gap-3">
-                        <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-[12px] font-semibold text-primary">
-                          {user.displayName?.[0] || 'U'}
-                        </div>
-                        <div className="min-w-0">
+                      <div className="flex items-center gap-3 min-w-0">
+                        {user.photoURL ? (
+                          <div className="relative size-9 shrink-0 overflow-hidden rounded-full border border-hairline">
+                            <Image
+                              src={user.photoURL}
+                              alt={user.displayName || user.email || 'User'}
+                              fill
+                              className="object-cover"
+                              sizes="36px"
+                            />
+                          </div>
+                        ) : (
+                          <div className="flex size-9 shrink-0 items-center justify-center rounded-full border border-primary/30 bg-primary/15 font-mono text-[13px] font-bold text-primary">
+                            {(user.displayName?.trim()?.[0] || user.email?.trim()?.[0] || 'U').toUpperCase()}
+                          </div>
+                        )}
+                        <div className="min-w-0 flex-1">
                           <p className="truncate text-[13.5px] font-medium text-foreground">
-                            {user.displayName || 'Adcanopus User'}
+                            {user.displayName || user.email?.split('@')[0] || 'User'}
                           </p>
                           <p className="truncate font-mono text-[10.5px] text-muted-foreground">
                             {user.email}
                           </p>
                         </div>
                       </div>
-                      <UserProfileMenu />
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          setMenuOpen(false)
+                          await signOutUser()
+                        }}
+                        className="ml-2 shrink-0 rounded-lg border border-hairline bg-surface-2 px-3 py-1.5 text-[12px] font-medium text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+                      >
+                        Sign out
+                      </button>
                     </div>
                   ) : (
                     <div className="grid grid-cols-2 gap-2">

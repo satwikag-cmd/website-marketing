@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 export function UserProfileMenu() {
   const { user, signOutUser } = useAuth()
   const [open, setOpen] = useState(false)
+  const [imageError, setImageError] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -23,14 +24,13 @@ export function UserProfileMenu() {
 
   if (!user) return null
 
-  const initials = user.displayName
-    ? user.displayName
-        .split(' ')
-        .map((n) => n[0])
-        .slice(0, 2)
-        .join('')
-        .toUpperCase()
-    : 'U'
+  const firstLetter = (
+    user.displayName?.trim()?.[0] ||
+    user.email?.trim()?.[0] ||
+    'U'
+  ).toUpperCase()
+
+  const displayName = user.displayName || user.email?.split('@')[0] || 'Account'
 
   return (
     <div className="relative" ref={menuRef}>
@@ -44,24 +44,25 @@ export function UserProfileMenu() {
           open && 'border-primary/50 bg-surface-2 ring-1 ring-primary/30',
         )}
       >
-        {user.photoURL ? (
+        {user.photoURL && !imageError ? (
           <div className="relative size-7 shrink-0 overflow-hidden rounded-full border border-hairline">
             <Image
               src={user.photoURL}
-              alt={user.displayName || 'User profile'}
+              alt={displayName}
               fill
               className="object-cover"
               sizes="28px"
+              onError={() => setImageError(true)}
             />
           </div>
         ) : (
-          <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-[11px] font-semibold text-primary">
-            {initials}
+          <div className="flex size-7 shrink-0 items-center justify-center rounded-full border border-primary/30 bg-primary/15 font-mono text-[12px] font-semibold text-primary">
+            {firstLetter}
           </div>
         )}
 
         <span className="max-w-[120px] truncate text-[13px] font-medium text-foreground">
-          {user.displayName?.split(' ')[0] || 'Account'}
+          {displayName.split(' ')[0]}
         </span>
 
         <ChevronDown
@@ -75,23 +76,41 @@ export function UserProfileMenu() {
 
       {/* Dropdown Menu */}
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-64 origin-top-right overflow-hidden rounded-xl border border-border bg-surface p-2 shadow-xl backdrop-blur-xl">
+        <div className="absolute right-0 top-full mt-2 w-72 origin-top-right overflow-hidden rounded-xl border border-border bg-surface p-3 shadow-xl backdrop-blur-xl">
           {/* User info header */}
-          <div className="border-b border-hairline px-3 py-2.5">
-            <p className="truncate text-[13.5px] font-medium text-foreground">
-              {user.displayName || 'Adcanopus User'}
-            </p>
-            <p className="truncate font-mono text-[11px] text-muted-foreground">
-              {user.email}
-            </p>
-            <div className="mt-2 flex items-center gap-1.5 font-mono text-[10px] text-signal">
-              <CheckCircle2 className="size-3 text-signal" />
-              <span>Signed in with Google</span>
+          <div className="flex items-center gap-3 border-b border-hairline pb-3">
+            {user.photoURL && !imageError ? (
+              <div className="relative size-10 shrink-0 overflow-hidden rounded-full border border-hairline">
+                <Image
+                  src={user.photoURL}
+                  alt={displayName}
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                  onError={() => setImageError(true)}
+                />
+              </div>
+            ) : (
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-full border border-primary/30 bg-primary/15 font-mono text-[15px] font-bold text-primary">
+                {firstLetter}
+              </div>
+            )}
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-[13.5px] font-medium text-foreground">
+                {user.displayName || displayName}
+              </p>
+              <p className="truncate font-mono text-[11px] text-muted-foreground">
+                {user.email}
+              </p>
+              <div className="mt-1 flex items-center gap-1.5 font-mono text-[10px] text-signal">
+                <CheckCircle2 className="size-3 text-signal shrink-0" />
+                <span>Signed in with Google</span>
+              </div>
             </div>
           </div>
 
           {/* Actions */}
-          <div className="pt-1.5">
+          <div className="pt-2">
             <button
               type="button"
               onClick={async () => {
