@@ -5,14 +5,13 @@ export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={cn('size-6', className)}>
       <rect width="24" height="24" rx="6" className="fill-primary" />
-      <path
-        d="M6.5 17.25 12 6.75l5.5 10.5"
-        className="stroke-primary-foreground"
-        strokeWidth="2.1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M9.25 13.5h5.5" className="stroke-primary-foreground" strokeWidth="2.1" strokeLinecap="round" />
+      <g className="fill-primary-foreground">
+        <rect x="5.5" y="5.5" width="5.75" height="5.75" rx="1.75" fillOpacity="0.45" />
+        <rect x="12.75" y="5.5" width="5.75" height="5.75" rx="1.75" />
+        <rect x="5.5" y="12.75" width="5.75" height="5.75" rx="1.75" />
+        <rect x="12.75" y="12.75" width="5.75" height="5.75" rx="1.75" fillOpacity="0.45" />
+        <circle cx="12" cy="12" r="1.25" className="fill-primary" />
+      </g>
     </svg>
   )
 }
