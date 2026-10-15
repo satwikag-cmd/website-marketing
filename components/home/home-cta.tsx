@@ -5,8 +5,11 @@ import { ArrowRight } from 'lucide-react'
 import { EASE_OUT } from '@/lib/motion'
 import { ActionLink } from '@/components/site/action-link'
 import { GoogleIcon } from '@/components/site/google-icon'
+import { useAuth } from '@/components/site/auth-context'
 
 export function HomeCta() {
+  const { user, signInWithGoogle } = useAuth()
+
   return (
     <section className="relative isolate overflow-hidden border-t border-hairline py-20 md:py-28">
       <div
@@ -50,14 +53,33 @@ export function HomeCta() {
             transition={{ duration: 0.8, delay: 0.3, ease: EASE_OUT }}
             className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <ActionLink href="#start-trial" size="lg" className="w-full sm:w-auto">
-              <span>Start Free Trial</span>
-              <ArrowRight className="size-4 transition-transform duration-200 group-hover/action:translate-x-0.5" aria-hidden="true" />
-            </ActionLink>
-            <ActionLink href="#sign-in" variant="secondary" size="lg" className="w-full sm:w-auto">
-              <GoogleIcon className="size-4" />
-              <span>Sign in with Google</span>
-            </ActionLink>
+            {user ? (
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <ActionLink href="/pricing" size="lg">
+                  <span>View Pricing & Plans</span>
+                  <ArrowRight className="size-4 transition-transform duration-200 group-hover/action:translate-x-0.5" aria-hidden="true" />
+                </ActionLink>
+                <div className="inline-flex h-12 items-center gap-3 rounded-lg border border-primary/40 bg-surface px-5 text-[15px] font-medium text-foreground shadow-sm">
+                  <span className="size-2 rounded-full bg-signal" />
+                  <span>Connected as {user.displayName || user.email}</span>
+                </div>
+              </div>
+            ) : (
+              <>
+                <ActionLink href="/pricing" size="lg" className="w-full sm:w-auto">
+                  <span>Start Free Trial</span>
+                  <ArrowRight className="size-4 transition-transform duration-200 group-hover/action:translate-x-0.5" aria-hidden="true" />
+                </ActionLink>
+                <button
+                  type="button"
+                  onClick={() => signInWithGoogle()}
+                  className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg border border-border bg-surface-2 px-5 text-[15px] font-medium text-foreground transition-colors hover:bg-surface-3 active:translate-y-px sm:w-auto"
+                >
+                  <GoogleIcon className="size-4" />
+                  <span>Sign in with Google</span>
+                </button>
+              </>
+            )}
           </motion.div>
 
           <p className="mt-4 font-mono text-[11px] text-muted-foreground/70">

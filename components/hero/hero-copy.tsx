@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import { EASE_OUT } from '@/lib/motion'
 import { ActionLink } from '@/components/site/action-link'
 import { GoogleIcon } from '@/components/site/google-icon'
+import { useAuth } from '@/components/site/auth-context'
 
 const HEADLINE = 'Built for the way modern advertisers work.'
 
@@ -39,6 +40,8 @@ const fadeUp = (delay: number) => ({
 })
 
 export function HeroCopy() {
+  const { user, signInWithGoogle } = useAuth()
+
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-12 xl:gap-16">
       <div className="min-w-0">
@@ -63,17 +66,23 @@ export function HeroCopy() {
 
         <motion.div {...fadeUp(0.7)} className="mt-7 flex w-full flex-col items-stretch sm:w-fit">
           <div role="group" aria-label="Get started" className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_1fr]">
-            <ActionLink href="#start-trial" size="lg" className="w-full leading-none">
+            <ActionLink href="/pricing" size="lg" className="w-full leading-none">
               <span>Start Free Trial</span>
               <ArrowRight
                 className="size-4 shrink-0 transition-transform duration-200 group-hover/action:translate-x-0.5"
                 aria-hidden="true"
               />
             </ActionLink>
-            <ActionLink href="#sign-in" variant="secondary" size="lg" className="w-full leading-none">
-              <GoogleIcon className="size-4 shrink-0" />
-              <span>Sign in with Google</span>
-            </ActionLink>
+            {!user && (
+              <button
+                type="button"
+                onClick={() => signInWithGoogle()}
+                className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg border border-border bg-surface-2 px-5 text-[15px] font-medium text-foreground transition-colors hover:bg-surface-3 active:translate-y-px"
+              >
+                <GoogleIcon className="size-4 shrink-0" />
+                <span>Sign in with Google</span>
+              </button>
+            )}
           </div>
           <p className="mt-4 text-center font-mono text-[11px] text-muted-foreground/80">
             {'14-day trial · No credit card · Cancel anytime'}

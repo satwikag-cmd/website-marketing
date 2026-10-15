@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/site/theme-provider'
+import { AuthProvider } from '@/components/site/auth-context'
 import { ScrollRestoration } from '@/components/site/scroll-restoration'
 import './globals.css'
 
@@ -74,9 +75,11 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProvider>
-          <ScrollRestoration />
-          {children}
-          {process.env.NODE_ENV === 'production' && <Analytics />}
+          <AuthProvider>
+            <ScrollRestoration />
+            {children}
+            {process.env.NODE_ENV === 'production' && <Analytics />}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -9,6 +9,8 @@ import { EASE_OUT } from '@/lib/motion'
 import { Logo } from './logo'
 import { ActionLink } from './action-link'
 import { ThemeToggle } from './theme-toggle'
+import { UserProfileMenu } from './user-profile-menu'
+import { useAuth } from './auth-context'
 
 const FEATURES_NAV = [
   {
@@ -59,6 +61,7 @@ const SOLUTIONS_NAV = [
 ]
 
 export function Navbar() {
+  const { user, signInWithGoogle } = useAuth()
   const { scrollY } = useScroll()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -264,16 +267,29 @@ export function Navbar() {
 
           <div className="hidden items-center justify-end gap-2 md:flex">
             <ThemeToggle />
-            <ActionLink href="#sign-in" variant="ghost" size="sm">
-              Sign in
-            </ActionLink>
-            <ActionLink href="#start-trial" variant="primary" size="sm" className="pr-2.5">
-              Start Free Trial
-              <ArrowRight
-                className="size-3.5 transition-transform duration-200 group-hover/action:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </ActionLink>
+            {user ? (
+              <UserProfileMenu />
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => signInWithGoogle()}
+                  className="inline-flex h-8 items-center justify-center rounded-md px-3 text-[13px] font-medium text-muted-foreground transition-colors hover:bg-white/[0.04] hover:text-foreground focus-visible:outline-2"
+                >
+                  Sign in
+                </button>
+                <Link
+                  href="/pricing"
+                  className="group/action relative inline-flex h-8 items-center justify-center gap-1.5 rounded-md bg-primary px-3 pr-2.5 text-[13px] font-medium text-primary-foreground shadow-[inset_0_1px_0_oklch(1_0_0/0.35),0_0_0_1px_oklch(0.62_0.12_65),0_8px_24px_-8px_oklch(0.83_0.135_74/0.45)] transition-[background-color,color,box-shadow,transform] duration-200 hover:bg-[oklch(0.86_0.13_76)] active:translate-y-px focus-visible:outline-2"
+                >
+                  <span>Start Free Trial</span>
+                  <ArrowRight
+                    className="size-3.5 transition-transform duration-200 group-hover/action:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </>
+            )}
           </div>
 
           <div className="flex items-center gap-1.5 justify-self-end md:hidden">
@@ -360,13 +376,45 @@ export function Navbar() {
                   </Link>
                 </div>
 
-                <div className="mt-4 grid grid-cols-2 gap-2 border-t border-hairline pt-4">
-                  <ActionLink href="#sign-in" variant="secondary" size="md">
-                    Sign in
-                  </ActionLink>
-                  <ActionLink href="#start-trial" variant="primary" size="md">
-                    Start Free Trial
-                  </ActionLink>
+                <div className="mt-4 border-t border-hairline pt-4">
+                  {user ? (
+                    <div className="flex items-center justify-between rounded-xl border border-hairline bg-surface p-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-[12px] font-semibold text-primary">
+                          {user.displayName?.[0] || 'U'}
+                        </div>
+                        <div className="min-w-0">
+                          <p className="truncate text-[13.5px] font-medium text-foreground">
+                            {user.displayName || 'Adcanopus User'}
+                          </p>
+                          <p className="truncate font-mono text-[10.5px] text-muted-foreground">
+                            {user.email}
+                          </p>
+                        </div>
+                      </div>
+                      <UserProfileMenu />
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 gap-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setMenuOpen(false)
+                          signInWithGoogle()
+                        }}
+                        className="inline-flex h-9 items-center justify-center rounded-md border border-hairline bg-surface-2 text-sm font-medium text-foreground transition-colors hover:bg-surface-3"
+                      >
+                        Sign in
+                      </button>
+                      <Link
+                        href="/pricing"
+                        onClick={() => setMenuOpen(false)}
+                        className="inline-flex h-9 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-[oklch(0.86_0.13_76)]"
+                      >
+                        Start Free Trial
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>

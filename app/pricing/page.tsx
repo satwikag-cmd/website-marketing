@@ -3,6 +3,7 @@ import { Navbar } from '@/components/site/navbar'
 import { HomeCta } from '@/components/home/home-cta'
 import { Footer } from '@/components/site/footer'
 import { ActionLink } from '@/components/site/action-link'
+import { PricingCardAction } from '@/components/site/pricing-card-action'
 import { Check, ArrowRight, PhoneCall } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -27,7 +28,6 @@ const PLANS = [
     ],
     ctaText: 'Start Free Trial',
     ctaVariant: 'secondary' as const,
-    ctaHref: '#start-trial',
   },
   {
     name: 'Pro',
@@ -44,7 +44,6 @@ const PLANS = [
     ],
     ctaText: 'Start Free Trial',
     ctaVariant: 'primary' as const,
-    ctaHref: '#start-trial',
   },
   {
     name: 'Enterprise',
@@ -61,7 +60,6 @@ const PLANS = [
     ],
     ctaText: 'Book a Call',
     ctaVariant: 'secondary' as const,
-    ctaHref: '#book-call',
   },
 ]
 
@@ -129,10 +127,11 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mt-8 pt-4">
-                  <ActionLink href={plan.ctaHref} variant={plan.ctaVariant} size="lg" className="w-full">
-                    <span>{plan.ctaText}</span>
-                    <ArrowRight className="size-4" />
-                  </ActionLink>
+                  <PricingCardAction
+                    planName={plan.name}
+                    ctaText={plan.ctaText}
+                    ctaVariant={plan.ctaVariant}
+                  />
                 </div>
               </div>
             ))}

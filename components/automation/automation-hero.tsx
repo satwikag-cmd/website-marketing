@@ -74,7 +74,7 @@ export function AutomationHero() {
             {...fadeUp(0.32)}
             className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:w-fit"
           >
-            <ActionLink href="#start-trial" size="lg">
+            <ActionLink href="/pricing" size="lg">
               <span>Start Free Trial</span>
               <ArrowRight className="size-4 transition-transform duration-200 group-hover/action:translate-x-0.5" aria-hidden="true" />
             </ActionLink>
