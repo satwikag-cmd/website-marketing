@@ -11,6 +11,7 @@ import { Logo } from './logo'
 import { ActionLink } from './action-link'
 import { ThemeToggle } from './theme-toggle'
 import { UserProfileMenu } from './user-profile-menu'
+import { OnboardingBanner } from './onboarding-banner'
 import { useAuth } from './auth-context'
 
 const FEATURES_NAV = [
@@ -442,6 +443,8 @@ export function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        <OnboardingBanner />
       </div>
     </motion.header>
   )
