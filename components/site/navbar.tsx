@@ -11,7 +11,8 @@ import { Logo } from './logo'
 import { ActionLink } from './action-link'
 import { ThemeToggle } from './theme-toggle'
 import { UserProfileMenu } from './user-profile-menu'
-import { OnboardingBanner } from './onboarding-banner'
+import { SignedOutBanner } from './signed-out-banner'
+import { WelcomeModal } from './welcome-modal'
 import { useAuth } from './auth-context'
 
 const FEATURES_NAV = [
@@ -74,14 +75,16 @@ export function Navbar() {
   const elevated = scrolled || menuOpen
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: EASE_OUT }}
-      className="fixed inset-x-0 top-0 z-50"
-    >
-      <OnboardingBanner />
-      <div
+    <>
+      <WelcomeModal />
+      <motion.header
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: EASE_OUT }}
+        className="fixed inset-x-0 top-0 z-50"
+      >
+        <SignedOutBanner />
+        <div
         className={cn(
           'border-b transition-[background-color,border-color,backdrop-filter] duration-300',
           elevated
@@ -446,6 +449,7 @@ export function Navbar() {
         </AnimatePresence>
       </div>
     </motion.header>
+    </>
   )
 }
 
