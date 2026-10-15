@@ -64,7 +64,7 @@ export function WelcomeModal() {
               Welcome, {displayName}!
             </h2>
             <p className="text-[14.5px] leading-relaxed text-muted-foreground">
-              Our team will connect with you shortly to set up your account.
+              Your account will be ready shortly. We’ll notify you by email once the setup is complete.
             </p>
           </div>
 
