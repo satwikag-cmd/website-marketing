@@ -7,7 +7,7 @@ import { MetaAdsCard } from '@/components/meta-ads/meta-ads-card'
 import { Layers, Wand2, FolderKanban, BarChart3 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Meta Ads Platform | Adcanopus',
+  title: 'Meta Ads Platform | Scaviyo',
   description:
     'Built specifically for Meta Ads workflows, bringing campaign execution, creative management, automation, and multi-account reporting into one focused platform.',
 }

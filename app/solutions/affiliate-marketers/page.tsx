@@ -7,7 +7,7 @@ import { SolutionCard } from '@/components/solutions/solution-card'
 import { Zap, LayoutGrid, BarChart3 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Solutions for Affiliate Marketers | Adcanopus',
+  title: 'Solutions for Affiliate Marketers | Scaviyo',
   description:
     'Built for affiliate marketers testing different offers, creatives, and campaign structures across multiple Meta ad accounts. Move quickly without repetitive setup.',
 }

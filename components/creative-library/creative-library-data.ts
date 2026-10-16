@@ -83,7 +83,7 @@ export const MOCK_CREATIVES: CreativeAsset[] = [
     tag: 'Comparison',
     slides: 3,
     accentColor: 'oklch(0.75 0.14 220)',
-    mockHeadline: 'Traditional Setup vs Adcanopus',
+    mockHeadline: 'Traditional Setup vs Scaviyo',
     mockSubtext: 'Side-by-side workflow breakdown',
     mockCta: 'Swipe Details',
     badgeText: '3 Slides',

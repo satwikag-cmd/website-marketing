@@ -19,7 +19,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Read persisted theme from localStorage; default is 'light'
     try {
-      const stored = localStorage.getItem('adcanopus_theme') as Theme | null
+      const stored = (localStorage.getItem('scaviyo_theme') || localStorage.getItem('adcanopus_theme')) as Theme | null
       if (stored === 'dark' || stored === 'light') {
         setThemeState(stored)
         if (stored === 'dark') {
@@ -41,7 +41,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const setTheme = (nextTheme: Theme) => {
     setThemeState(nextTheme)
     try {
-      localStorage.setItem('adcanopus_theme', nextTheme)
+      localStorage.setItem('scaviyo_theme', nextTheme)
     } catch {
       // Ignore
     }

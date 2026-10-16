@@ -6,7 +6,7 @@ import { ActionLink } from '@/components/site/action-link'
 import { ArrowRight, Home } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Page Not Found | Adcanopus',
+  title: 'Page Not Found | Scaviyo',
   description: 'The requested page could not be found.',
 }
 

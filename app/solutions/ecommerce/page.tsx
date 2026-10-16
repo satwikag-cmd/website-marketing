@@ -7,7 +7,7 @@ import { SolutionCard } from '@/components/solutions/solution-card'
 import { Layers, FolderKanban, BarChart3 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Solutions for E-commerce & DTC Brands | Adcanopus',
+  title: 'Solutions for E-commerce & DTC Brands | Scaviyo',
   description:
     'Built for e-commerce teams managing multiple products, creatives, and Meta ad accounts. Launch campaigns faster, organize assets, and track performance.',
 }

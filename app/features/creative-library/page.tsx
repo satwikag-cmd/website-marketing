@@ -7,7 +7,7 @@ import { HomeCta } from '@/components/home/home-cta'
 import { Footer } from '@/components/site/footer'
 
 export const metadata: Metadata = {
-  title: 'Creative Library | Adcanopus',
+  title: 'Creative Library | Scaviyo',
   description:
     'Organize your ad creatives in one place, group them by format or campaign, and quickly find the right assets when building Meta campaigns.',
 }

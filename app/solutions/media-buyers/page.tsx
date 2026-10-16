@@ -7,7 +7,7 @@ import { SolutionCard } from '@/components/solutions/solution-card'
 import { Layers, BarChart3, FolderKanban } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Solutions for Media Buyers & Agencies | Adcanopus',
+  title: 'Solutions for Media Buyers & Agencies | Scaviyo',
   description:
     'Built for performance agencies and freelance media buyers managing multiple client ad accounts. Standardize launches, organize creatives, and consolidate reporting.',
 }

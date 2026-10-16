@@ -72,7 +72,7 @@ export function MetaAdsHero() {
             {...fadeUp(0.22)}
             className="mt-6 text-pretty text-[16.5px] leading-relaxed text-muted-foreground md:text-[18px]"
           >
-            Adcanopus is built specifically for Meta Ads workflows, bringing campaign execution, creative management, automation, and multi-account reporting into one focused platform.
+            Scaviyo is built specifically for Meta Ads workflows, bringing campaign execution, creative management, automation, and multi-account reporting into one focused platform.
           </motion.p>
 
           {/* Action CTAs */}

@@ -33,7 +33,7 @@ export function ValueProposition() {
             transition={{ duration: 0.8, delay: 0.2, ease: EASE_OUT }}
             className="mt-5 text-pretty text-[15.5px] leading-relaxed text-muted-foreground md:text-[17px]"
           >
-            Adcanopus brings campaign creation, rule-based automation, creative asset management, and multi-account reporting into one cohesive workspace designed for modern media buyers.
+            Scaviyo brings campaign creation, rule-based automation, creative asset management, and multi-account reporting into one cohesive workspace designed for modern media buyers.
           </motion.p>
         </div>
       </div>

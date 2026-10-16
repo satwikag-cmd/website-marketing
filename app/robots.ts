@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://adcanopus.com/sitemap.xml',
+    sitemap: 'https://scaviyo.com/sitemap.xml',
   }
 }

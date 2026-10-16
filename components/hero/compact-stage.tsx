@@ -22,7 +22,7 @@ export function CompactStage({ sequence }: { sequence: Sequence }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.5, ease: EASE_OUT }}
       role="img"
-      aria-label="Adcanopus campaign manager: four Meta campaigns across three ad accounts move from draft to live while performance metrics update."
+      aria-label="Scaviyo campaign manager: four Meta campaigns across three ad accounts move from draft to live while performance metrics update."
       className="lg:hidden"
     >
       <div

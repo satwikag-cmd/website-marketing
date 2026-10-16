@@ -7,7 +7,7 @@ import { HomeCta } from '@/components/home/home-cta'
 import { Footer } from '@/components/site/footer'
 
 export const metadata: Metadata = {
-  title: 'Multi-Ad Account Reporting | Adcanopus',
+  title: 'Multi-Ad Account Reporting | Scaviyo',
   description:
     'Consolidated performance analytics, blended ROAS, and multi-account visibility for Meta advertising teams.',
 }

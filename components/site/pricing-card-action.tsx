@@ -19,7 +19,7 @@ export function PricingCardAction({ planName, ctaText, ctaVariant }: PricingCard
       signInWithGoogle()
     } else {
       if (planName === 'Enterprise') {
-        window.location.href = 'mailto:hello@adcanopus.com?subject=Enterprise%20Inquiry'
+        window.location.href = 'mailto:hello@scaviyo.com?subject=Enterprise%20Inquiry'
       } else {
         alert(`You are signed in as ${user.displayName || user.email}. Workspace setup for ${planName} plan will open here.`)
       }

@@ -7,7 +7,7 @@ import { PricingCardAction } from '@/components/site/pricing-card-action'
 import { Check, ArrowRight, PhoneCall } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Pricing | Adcanopus',
+  title: 'Pricing | Scaviyo',
   description:
     'Simple, transparent pricing for modern Meta advertisers and teams. Scale campaign execution, creative management, and reporting.',
 }

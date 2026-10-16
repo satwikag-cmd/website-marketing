@@ -7,7 +7,7 @@ import { HomeCta } from '@/components/home/home-cta'
 import { Footer } from '@/components/site/footer'
 
 export const metadata: Metadata = {
-  title: 'Bulk Campaign Launch | Adcanopus',
+  title: 'Bulk Campaign Launch | Scaviyo',
   description:
     'Create, configure, and launch multiple Meta ad campaigns across separate ad accounts simultaneously from a single master template.',
 }

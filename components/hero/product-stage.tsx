@@ -33,7 +33,7 @@ export function ProductStage({ sequence }: { sequence: Sequence }) {
         >
           <div
             role="img"
-            aria-label="Adcanopus campaign manager: four Meta campaigns across three ad accounts move from draft to live while spend, ROAS, CTR and conversions update."
+            aria-label="Scaviyo campaign manager: four Meta campaigns across three ad accounts move from draft to live while spend, ROAS, CTR and conversions update."
             className="relative"
           >
             <div aria-hidden="true" className="w-[82%]">

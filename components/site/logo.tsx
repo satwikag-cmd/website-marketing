@@ -3,15 +3,35 @@ import { cn } from '@/lib/utils'
 
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={cn('size-6', className)}>
-      <rect width="24" height="24" rx="6" className="fill-primary" />
-      <g className="fill-primary-foreground">
-        <rect x="5.5" y="5.5" width="5.75" height="5.75" rx="1.75" fillOpacity="0.45" />
-        <rect x="12.75" y="5.5" width="5.75" height="5.75" rx="1.75" />
-        <rect x="5.5" y="12.75" width="5.75" height="5.75" rx="1.75" />
-        <rect x="12.75" y="12.75" width="5.75" height="5.75" rx="1.75" fillOpacity="0.45" />
-        <circle cx="12" cy="12" r="1.25" className="fill-primary" />
-      </g>
+    <svg
+      viewBox="6.5 6.5 23 23"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className={cn('size-5 shrink-0', className)}
+    >
+      <defs>
+        <linearGradient id="scaviyo-delta-grad" x1="8" y1="7" x2="28" y2="29" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#FBBF24" />
+          <stop offset="100%" stopColor="#F59E0B" />
+        </linearGradient>
+      </defs>
+      {/* Top Delta Wing */}
+      <path
+        d="M10 7L27 7L20 15L9 15C7.5 15 6.5 13.5 7.5 12L10 7Z"
+        fill="url(#scaviyo-delta-grad)"
+      />
+      {/* Center Connecting Fin (Depth Shadow) */}
+      <path
+        d="M16 15L23 15L19 21L12 21L16 15Z"
+        fill="#D97706"
+        fillOpacity="0.88"
+      />
+      {/* Bottom Delta Wing */}
+      <path
+        d="M26 29L9 29L16 21L27 21C28.5 21 29.5 22.5 28.5 24L26 29Z"
+        fill="url(#scaviyo-delta-grad)"
+      />
     </svg>
   )
 }
@@ -21,13 +41,15 @@ export function Logo({ className }: { className?: string }) {
     <Link
       href="/"
       className={cn(
-        'group inline-flex items-center gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4',
+        'group inline-flex items-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4',
         className,
       )}
-      aria-label="Adcanopus home"
+      aria-label="Scaviyo home"
     >
-      <LogoMark className="transition-transform duration-500 ease-out group-hover:-rotate-6" />
-      <span className="text-[15px] font-semibold tracking-[-0.02em] text-foreground">adcanopus</span>
+      <LogoMark className="transition-transform duration-200 ease-out group-hover:scale-105" />
+      <span className="text-[16px] font-bold tracking-[-0.035em] text-foreground">
+        Scaviyo
+      </span>
     </Link>
   )
 }
