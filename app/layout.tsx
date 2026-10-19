@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Righteous } from 'next/font/google'
 import { ThemeProvider } from '@/components/site/theme-provider'
 import { AuthProvider } from '@/components/site/auth-context'
 import { ScrollRestoration } from '@/components/site/scroll-restoration'
@@ -8,6 +8,7 @@ import './globals.css'
 
 const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
+const righteous = Righteous({ weight: '400', subsets: ['latin'], variable: '--font-righteous' })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://scaviyo.com'),
@@ -55,7 +56,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} bg-background`}
+      className={`${geistSans.variable} ${geistMono.variable} ${righteous.variable} bg-background`}
     >
       <head>
         <script

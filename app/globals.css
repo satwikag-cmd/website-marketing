@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
@@ -7,6 +8,7 @@
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-brand: var(--font-righteous), 'Righteous', cursive, sans-serif;
 
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -127,4 +129,8 @@
   @media (width >= 48rem) {
     padding-inline: 2rem;
   }
+}
+
+@utility font-brand {
+  font-family: var(--font-righteous), 'Righteous', cursive, sans-serif;
 }
