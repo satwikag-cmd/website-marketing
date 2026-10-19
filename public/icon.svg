@@ -1,8 +1,11 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="180" height="180" rx="44" fill="#F5A623"/>
-  <rect x="42" y="42" width="42" height="42" rx="12" fill="#121318" fill-opacity="0.45"/>
-  <rect x="96" y="42" width="42" height="42" rx="12" fill="#121318"/>
-  <rect x="42" y="96" width="42" height="42" rx="12" fill="#121318"/>
-  <rect x="96" y="96" width="42" height="42" rx="12" fill="#121318" fill-opacity="0.45"/>
-  <circle cx="90" cy="90" r="10" fill="#F5A623"/>
+<svg width="32" height="32" viewBox="6.5 6.5 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="scaviyo-fav-grad" x1="10" y1="7" x2="26" y2="29" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB800" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+  <path d="M10 7L27 7L20 15L9 15C7.5 15 6.5 13.5 7.5 12L10 7Z" fill="url(#scaviyo-fav-grad)"/>
+  <path d="M16 15L23 15L19 21L12 21L16 15Z" fill="#D97706" fill-opacity="0.9"/>
+  <path d="M26 29L9 29L16 21L27 21C28.5 21 29.5 22.5 28.5 24L26 29Z" fill="url(#scaviyo-fav-grad)"/>
 </svg>

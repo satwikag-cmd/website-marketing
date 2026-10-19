@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   applicationName: 'Scaviyo',
   icons: {
     icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon.svg?v=2', type: 'image/svg+xml' },
     ],
-    apple: '/icon.svg',
+    apple: '/icon.svg?v=2',
   },
   openGraph: {
     title: 'Scaviyo — Meta Ads Platform',
