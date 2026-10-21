@@ -4,13 +4,22 @@ import { cn } from '@/lib/utils'
 
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <Image
-      src="/scaviyo5.png"
-      alt="Scaviyo"
-      width={200}
-      height={70}
-      className={cn('h-7 w-auto object-contain dark:hidden mix-blend-multiply', className)}
-    />
+    <>
+      <Image
+        src="/scaviyo5.png"
+        alt="Scaviyo"
+        width={1459}
+        height={437}
+        className={cn('h-7 w-auto object-contain dark:hidden', className)}
+      />
+      <Image
+        src="/scaviyo6.png"
+        alt="Scaviyo"
+        width={1459}
+        height={437}
+        className={cn('h-7 w-auto object-contain hidden dark:block', className)}
+      />
+    </>
   )
 }
 
@@ -28,19 +37,19 @@ export function Logo({ className }: { className?: string }) {
       <Image
         src="/scaviyo5.png"
         alt="Scaviyo"
-        width={200}
-        height={70}
+        width={1459}
+        height={437}
         priority
-        className="h-[80px] w-auto object-contain dark:hidden transition-transform duration-200 ease-out group-hover:scale-105 mix-blend-multiply"
+        className="h-9 sm:h-12 w-auto object-contain dark:hidden transition-transform duration-200 ease-out group-hover:scale-105"
       />
       {/* Dark Mode Logo */}
       <Image
         src="/scaviyo6.png"
         alt="Scaviyo"
-        width={200}
-        height={70}
+        width={1459}
+        height={437}
         priority
-        className="h-[80px] w-auto object-contain hidden dark:block transition-transform duration-200 ease-out group-hover:scale-105 mix-blend-screen"
+        className="h-9 sm:h-12 w-auto object-contain hidden dark:block transition-transform duration-200 ease-out group-hover:scale-105"
       />
     </Link>
   )

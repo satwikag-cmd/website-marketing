@@ -69,6 +69,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<'features' | 'solutions' | null>(null)
+  const [mobileAvatarError, setMobileAvatarError] = useState(false)
 
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 12))
 
@@ -386,14 +387,15 @@ export function Navbar() {
                   {user ? (
                     <div className="flex items-center justify-between rounded-xl border border-hairline bg-surface p-3">
                       <div className="flex items-center gap-3 min-w-0">
-                        {user.photoURL ? (
-                          <div className="relative size-9 shrink-0 overflow-hidden rounded-full border border-hairline">
-                            <Image
+                        {user.photoURL && !mobileAvatarError ? (
+                          <div className="relative size-9 shrink-0 overflow-hidden rounded-full border border-hairline bg-surface-2">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
                               src={user.photoURL}
                               alt={user.displayName || user.email || 'User'}
-                              fill
-                              className="object-cover"
-                              sizes="36px"
+                              referrerPolicy="no-referrer"
+                              className="size-full object-cover"
+                              onError={() => setMobileAvatarError(true)}
                             />
                           </div>
                         ) : (

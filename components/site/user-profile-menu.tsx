@@ -45,13 +45,13 @@ export function UserProfileMenu() {
         )}
       >
         {user.photoURL && !imageError ? (
-          <div className="relative size-7 shrink-0 overflow-hidden rounded-full border border-hairline">
-            <Image
+          <div className="relative size-7 shrink-0 overflow-hidden rounded-full border border-hairline bg-surface-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={user.photoURL}
               alt={displayName}
-              fill
-              className="object-cover"
-              sizes="28px"
+              referrerPolicy="no-referrer"
+              className="size-full object-cover"
               onError={() => setImageError(true)}
             />
           </div>
